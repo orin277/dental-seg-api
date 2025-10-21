@@ -1,0 +1,23 @@
+[project]
+name = "dental-seg-api"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "orin277",email = "bogush.vasyar@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi (>=0.119.1,<0.120.0)",
+    "uvicorn[standard] (>=0.38.0,<0.39.0)",
+    "opencv-python (>=4.12.0.88,<5.0.0.0)",
+    "torchmetrics (>=1.8.2,<2.0.0)",
+    "albumentations (>=2.0.8,<3.0.0)",
+    "python-multipart (>=0.0.20,<0.0.21)",
+    "pydantic-settings (>=2.11.0,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
