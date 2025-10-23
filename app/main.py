@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from app.core.config import settings
 from app.neural_networks.models.model_loader import ModelLoader
 from app.api.v1.model import router as model_router
+from app.middlewares.process_time_header_middleware import ProcessTimeHeaderMiddleware
 
 
 @asynccontextmanager
@@ -23,3 +24,5 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 app.include_router(model_router)
+
+app.add_middleware(ProcessTimeHeaderMiddleware)
