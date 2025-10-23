@@ -1,5 +1,5 @@
 from app.neural_networks.models.dense_unet import DenseUnetModel
-from app.neural_networks.models.resudial_unet import ResidualUnetModel
+from app.neural_networks.models.residual_unet import ResidualUnetModel
 from app.neural_networks.models.unet import UnetModel
 from app.neural_networks.models.unet_3plus import Unet3PlusModel
 import torch
