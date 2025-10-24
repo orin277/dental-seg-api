@@ -17,5 +17,11 @@ def get_mask_path():
     return os.path.join(settings.MASK_PATH, f"{uuid4().hex}_maks.png")
 
 def denormalize_image(image):
-    image = (image - image.min()) / (image.max() - image.min())
+    img_min = image.min()
+    img_max = image.max()
+
+    if img_max == img_min:
+        return np.zeros_like(image, dtype=np.uint8)
+    
+    image = (image - img_min) / (img_max - img_min)
     return (image * 255).astype(np.uint8)
