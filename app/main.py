@@ -1,10 +1,13 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
+import os
 
 from app.core.config import settings
 from app.neural_networks.models.model_loader import ModelLoader
 from app.api.v1.model import router as model_router
 from app.middlewares.process_time_header_middleware import ProcessTimeHeaderMiddleware
+from app.core.logger import setup_logging
+
 
 
 @asynccontextmanager
@@ -21,6 +24,7 @@ async def lifespan(app: FastAPI):
     yield
 
 
+setup_logging()
 app = FastAPI(lifespan=lifespan)
 
 app.include_router(model_router)
