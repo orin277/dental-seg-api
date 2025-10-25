@@ -29,3 +29,7 @@ app = FastAPI(lifespan=lifespan)
 app.include_router(model_router)
 
 app.add_middleware(ProcessTimeHeaderMiddleware)
+
+@app.get("/health", tags=["Health Check"])
+def health_check():
+    return {"status": "ok"}
