@@ -71,7 +71,7 @@ class ModelService:
     
     async def _load_image(self, file):
         self.validator.check_file_existence(file)
-        self.validator.check_image_format(file)
+        await self.validator.check_image_format(file)
 
         contents = await file.read()
         self.validator.check_file_size(contents)

@@ -1,6 +1,5 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
-import os
 
 from app.core.config import settings
 from app.neural_networks.models.model_loader import ModelLoader

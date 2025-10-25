@@ -1,5 +1,6 @@
 from app.exceptions.model import BigFileSizeException, FileNotTransferredException, IncorrectFileTypeException
 from app.core.logger import get_logger
+import filetype
 
 logger = get_logger(__name__)
 
@@ -12,8 +13,12 @@ class InputValidator:
             logger.error("File not transferred {}", file.filename)
             raise FileNotTransferredException()
         
-    def check_image_format(self, file):
-        if not file.content_type.startswith("image/"):
+    async def check_image_format(self, file):
+        contents = await file.read(2048)
+        await file.seek(0)
+
+        kind = filetype.guess(contents)
+        if kind is None or kind.mime not in {"image/jpeg", "image/png"}:
             logger.error("Incorrect file type {}", file.filename)
             raise IncorrectFileTypeException()
 
