@@ -36,7 +36,7 @@ class ModelLoader:
     
     @staticmethod
     def load_tooth_ensemble(model_paths, device):
-        model1 = ModelLoader.load_res_unet_model(model_paths[0], device)
+        model1 = ModelLoader.load_dense_unet_model(model_paths[0], device)
         model2 = ModelLoader.load_unet_3plus_model(model_paths[1], device)
         model3 = ModelLoader.load_attention_unet_model(model_paths[2], device)
         return [model1, model2, model3]
