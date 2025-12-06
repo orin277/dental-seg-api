@@ -47,7 +47,9 @@ def test_predict_tooth_seg_with_incorrect_file(client):
 
 
 def test_predict_tooth_seg_with_big_file(client):
-    io_buf = io.BytesIO(b"\0" * (20*1024*1024))
+    png_header = b"\x89PNG\r\n\x1a\n"
+    content = png_header + b"\0" * (20 * 1024 * 1024 - len(png_header))
+    io_buf = io.BytesIO(content)
     files = {"file": ("test.png", io_buf, "image/png")}
 
     response = client.post("/predict/tooth-segmentation", files=files)
@@ -83,7 +85,9 @@ def test_predict_caries_seg_with_incorrect_file(client):
 
 
 def test_predict_caries_seg_with_big_file(client):
-    io_buf = io.BytesIO(b"\0" * (20*1024*1024))
+    png_header = b"\x89PNG\r\n\x1a\n"
+    content = png_header + b"\0" * (20 * 1024 * 1024 - len(png_header))
+    io_buf = io.BytesIO(content)
     files = {"file": ("test.png", io_buf, "image/png")}
 
     response = client.post("/predict/tooth-segmentation", files=files)
