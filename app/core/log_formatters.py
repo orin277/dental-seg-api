@@ -1,6 +1,6 @@
 from copy import copy
 from logging import Formatter
-from pythonjsonlogger import jsonlogger
+from pythonjsonlogger import json
 
 
 MAPPING = {
@@ -28,7 +28,7 @@ class ColoredFormatter(Formatter):
         return Formatter.format(self, colored_record)
     
 
-class UvicornJsonFormatter(jsonlogger.JsonFormatter):
+class UvicornJsonFormatter(json.JsonFormatter):
     def process_log_record(self, record):
         record.pop("color_message", None)
         return super().process_log_record(record)

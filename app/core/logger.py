@@ -14,7 +14,7 @@ LOGGING_CONFIG = {
     "disable_existing_loggers": False,
     "formatters": {
         "json": {
-            "()": "pythonjsonlogger.jsonlogger.JsonFormatter",
+            "()": "pythonjsonlogger.json.JsonFormatter",
             "fmt": "[%(asctime)s] %(module)25s:%(lineno)-3d %(levelname)-8s - %(message)s",
             "datefmt": '%Y-%m-%d %H:%M:%S'
         },
