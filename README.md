@@ -20,3 +20,7 @@ Each prediction returns the path to the saved segmentation mask.
 - OpenCV – for image processing operations
 - Pytest – for automated testing
 - Logging – for runtime tracking and debugging
+
+## 🔬 Research on Models for Tooth and Caries Segmentation
+
+https://github.com/orin277/machine-learning-projects/tree/main/segmentation/tooth%20and%20caries%20segmentation
